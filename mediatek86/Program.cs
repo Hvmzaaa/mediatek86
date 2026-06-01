@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using mediatek86.controleur;
 
 namespace mediatek86
 {
@@ -16,7 +14,9 @@ namespace mediatek86
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+
+            // Lancement du contrôleur général au lieu de la vue directe
+            new Controle();
         }
     }
 }

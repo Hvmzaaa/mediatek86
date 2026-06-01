@@ -1,4 +1,4 @@
-﻿namespace mediatek86
+﻿namespace mediatek86.vue
 {
     partial class FrmLogin
     {
