@@ -28,4 +28,4 @@ Ce projet consiste en la création d'une application de gestion pour l'organisat
 * **Étape 5 :** Documentation (vidéo) et finalisation.
 
 ### Installation
-Pour installer l'application, veuillez utiliser le fichier **Setup1.msi** fourni dans le dépôt.
+L'application est fournie sous forme d'installateur (.msi). Veuillez consulter l'espace de dépôt des devoirs sur la plateforme de formation pour récupérer l'installateur.
