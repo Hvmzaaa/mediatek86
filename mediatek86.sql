@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -62,10 +61,6 @@ CREATE TABLE IF NOT EXISTS `motif` (
   PRIMARY KEY (`idmotif`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `motif`
---
-
 INSERT INTO `motif` (`idmotif`, `libelle`) VALUES
 (1, 'vacances'),
 (2, 'maladie'),
@@ -90,10 +85,6 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   KEY `fk_personnel_service` (`idservice`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `personnel`
---
-
 INSERT INTO `personnel` (`idpersonnel`, `nom`, `prenom`, `tel`, `mail`, `idservice`) VALUES
 (3, 'Thomas', 'Luc', '0304050607', 'l.thomas@mail.com', 3),
 (5, 'jule', 'martin', '05060703243', 'j.martin@mail.com', 2),
@@ -115,10 +106,6 @@ CREATE TABLE IF NOT EXISTS `responsable` (
   `pwd` varchar(64) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `responsable`
---
-
 INSERT INTO `responsable` (`login`, `pwd`) VALUES
 ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 
@@ -135,10 +122,6 @@ CREATE TABLE IF NOT EXISTS `service` (
   PRIMARY KEY (`idservice`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `service`
---
-
 INSERT INTO `service` (`idservice`, `nom`) VALUES
 (1, 'administratif'),
 (2, 'médiation culturelle'),
@@ -147,20 +130,19 @@ INSERT INTO `service` (`idservice`, `nom`) VALUES
 --
 -- Contraintes pour les tables déchargées
 --
-
---
--- Contraintes pour la table `absence`
---
 ALTER TABLE `absence`
   ADD CONSTRAINT `fk_absence_motif` FOREIGN KEY (`idmotif`) REFERENCES `motif` (`idmotif`),
   ADD CONSTRAINT `fk_absence_personnel` FOREIGN KEY (`idpersonnel`) REFERENCES `personnel` (`idpersonnel`);
 
---
--- Contraintes pour la table `personnel`
---
 ALTER TABLE `personnel`
   ADD CONSTRAINT `fk_personnel_service` FOREIGN KEY (`idservice`) REFERENCES `service` (`idservice`);
+
 COMMIT;
+
+-- Création de l'utilisateur pour l'application
+CREATE USER IF NOT EXISTS 'mediatek_user'@'localhost' IDENTIFIED BY 'TonMotDePasseSecret123';
+GRANT SELECT, INSERT, UPDATE, DELETE ON mediatek86.* TO 'mediatek_user'@'localhost';
+FLUSH PRIVILEGES;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
