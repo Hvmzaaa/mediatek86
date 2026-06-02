@@ -14,9 +14,18 @@ Ce projet consiste en la création d'une application de gestion pour l'organisat
 * **Base de données :** MySQL
 * **Pattern :** MVC (Modèle-Vue-Contrôleur)
 
+### Modèle Conceptuel de Données (MCD)
+![MCD du projet](mcd.png)
+
+### Diagramme de paquetages
+![Diagramme de paquetages](diagramme_paquetages.png)
+
 ### Historique des commits
 * **Étape 1 :** Architecture MVC et connexion BDD.
 * **Étape 2 :** Gestion du personnel (CRUD).
 * **Étape 3 :** Intégration des services.
 * **Étape 4 :** Lecture des absences.
 * **Étape 5 :** Documentation (vidéo) et finalisation.
+
+### Installation
+Pour installer l'application, veuillez utiliser le fichier **Setup1.msi** fourni dans le dépôt.
